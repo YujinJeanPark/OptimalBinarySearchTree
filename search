@@ -1,0 +1,23 @@
+struct nodetype
+{
+  keytype key;
+  nodetype* left;
+  nodetype* right;
+}
+
+typedef nodetype* node_pointer;
+
+void search(node_pointer tree, keytype keyin, node_pointer& p)
+{
+  bool found;
+  
+  p = tree;
+  found = false;
+  while(! found)
+    if(p->key == keyin)
+      found = true;
+    else if(keyin < p->key)
+      p = p->left;  // 왼쪽 자식마디로 간다
+    else
+      p = p->right; // 오른쪽 자식마디로 간다
+}
